@@ -146,6 +146,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         // Added for debugging.
         Barryvdh\Debugbar\ServiceProvider::class,
+        // Added for Doc for Laravel
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
     ],
 

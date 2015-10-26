@@ -2,17 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Input;
 
+
+/**
+ * Class LoginController
+ * @package App\Http\Controllers
+ */
 class LoginController extends Controller
 {
-    public function postLogin($request) {
-        //TODO
-        dd($request->all());
-        \Debugbar::info("0k entra a postLogin");
+    /**
+     * Process a login HTTP POST
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function postLogin(Request $request) {
+
+        //\Debugbar::info("0k entra a postLogin");
         echo "asdasd";
         if ($this->login($request->email.$request->password)){
             return redirec()->route('home');
@@ -21,6 +28,10 @@ class LoginController extends Controller
         }
     }
 
+    /**
+     * get Login
+     * @return \Illuminate\View\View
+     */
     public function getLogin()
     {
         return view('login');
