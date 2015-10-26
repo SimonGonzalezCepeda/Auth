@@ -16,7 +16,16 @@ Route::get('/', function () {
 });
 
 Route::get('/resource', function () {
-    $authenticated = true;
+
+    $authenticated = false;
+    Session::set('authenticated',true);
+    if (Session::has('authenticated')){
+       if (Session::get('autehnticated') == true) {
+           $authenticated = true;
+       }
+    }
+
+
     if ($authenticated){
         return view('resource');
     }else{
