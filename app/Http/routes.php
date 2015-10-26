@@ -16,20 +16,23 @@ Route::get('/', function () {
 });
 
 Route::get('/resource', function () {
-
+    \Debugbar::start_measure("resource");
     $authenticated = false;
+    Session::set('authenticated',true);
     \Debugbar::info("BOOOM!");
     \Debugbar::info(Session::all());
     if (Session::has('authenticated')){
-       if (Session::get('autehnticated') == true) {
+       if (Session::get('authenticated') == true) {
            $authenticated = true;
        }
     }
 
 
     if ($authenticated){
+        \Debugbar::stop_measure("resource");
         return view('resource');
     }else{
+        \Debugbar::stop_measure("resource");
         return view('login');
     }
 });
