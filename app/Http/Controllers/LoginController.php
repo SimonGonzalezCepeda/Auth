@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\User;
 
 
 /**
@@ -25,6 +26,19 @@ class LoginController extends Controller
             return redirec()->route('home');
         } else {
             return redirec()->route('login');
+        }
+    }
+
+    private function login($email, $password)
+    {
+        //$user = User::findOrFail(id); //Per a que peti.
+        //$user = User::all();
+        $user = User::where('email',$email)->first();  //Este tipus de consultes no torna un sol objecte.
+
+        if (Hash::check($password, $user->password)) {
+            return true;
+        }else {
+            return false;
         }
     }
 
