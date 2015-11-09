@@ -24,10 +24,7 @@ Route::get('/login', [ 'as' => 'auth.login', 'uses' => 'LoginController@getLogin
 Route::post('/postlogin', [ 'as' => 'auth.postLogin', 'uses' => 'LoginController@postLogin' ]);
 
 Route::get('/resource', function () {
-    \Debugbar::start_measure("resource");
     $authenticated = false;
-    \Debugbar::info("BOOOM!");
-    \Debugbar::info(Session::all());
     if (Session::has('authenticated')){
        if (Session::get('authenticated') == true) {
            $authenticated = true;
@@ -36,10 +33,16 @@ Route::get('/resource', function () {
 
 
     if ($authenticated){
-        \Debugbar::stop_measure("resource");
         return view('resource');
-    }else{
-        \Debugbar::stop_measure("resource");
+    }else {
         return view('login');
     }
 });
+
+Route::get('/flushSession',['as' => "session.flush", function() {
+    Session::flush();
+}]);
+
+Route::get('/register',['as' => "auth.register", function(){
+    echo "Aqui et registres";
+}]);

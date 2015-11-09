@@ -35,6 +35,9 @@ class LoginController extends Controller
         //$user = User::all();
         $user = User::where('email',$email)->first();  //Este tipus de consultes no torna un sol objecte.
 
+        if ($user == null){
+            return false;
+        }
         if (Hash::check($password, $user->password)) {
             return true;
         }else {
