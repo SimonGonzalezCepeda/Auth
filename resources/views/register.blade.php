@@ -38,28 +38,31 @@
 <body>
 <div class="container">
     <div class="content">
-        <div class="title">Login</div>
+        <div class="title">Register</div>
 
-        <form method="post" action="{{ route('auth.postLogin')}}">
+        <form method="post" action="{{ route('auth.postRegister')}}">
             {!! csrf_field() !!}
+            <div class="form-group">
+                <label for="name">User name:</label>
+                <input type="text" class="form-control" id="name" name="name">
+            </div>
             <div class="form-group">
                 <label for="email">Email address:</label>
                 <input type="email" class="form-control" id="email" name="email">
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" class="form-control" id="email" name="password">
+                <input type="password" class="form-control" id="password" name="password">
             </div>
-            <div class="checkbox">
-                <label><input type="checkbox" name="remember"> Remember me</label>
+            <div class="form-group">
+                <label for="password">Password confirm:</label>
+                <input type="password" class="form-control" id="password_confirm" name="password_confirm">
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
             <button type="reset" class="btn btn-default">Reset</button>
         </form>
-
-        No ets usuari encara?
-        <a id="register" href={{route("auth.register")}}>Registra't</a>
-
+        Ja ets usuari?
+        <a id="login" href={{route("auth.login")}}>Logetja't</a>
     </div>
 </div>
 </body>

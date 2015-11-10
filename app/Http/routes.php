@@ -35,7 +35,7 @@ Route::get('/resource', function () {
     if ($authenticated){
         return view('resource');
     }else {
-        return view('login');
+        return redirect() -> route('auth.login');
     }
 });
 
@@ -43,6 +43,6 @@ Route::get('/flushSession',['as' => "session.flush", function() {
     Session::flush();
 }]);
 
-Route::get('/register',['as' => "auth.register", function(){
-    echo "Aqui et registres";
-}]);
+Route::get('/register', [ 'as' => 'auth.register', 'uses' => 'RegisterController@getRegister' ]);
+
+Route::get('/register',['as' => "auth.postRegister", 'uses' => 'RegisterController@postRegister']);
