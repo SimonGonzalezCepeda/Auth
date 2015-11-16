@@ -9,7 +9,6 @@
         html, body {
             height: 100%;
         }
-
         body {
             margin: 0;
             padding: 0;
@@ -18,18 +17,15 @@
             font-weight: 100;
             font-family: 'Lato';
         }
-
         .container {
             text-align: center;
             display: table-cell;
             vertical-align: middle;
         }
-
         .content {
             text-align: center;
             display: inline-block;
         }
-
         .title {
             font-size: 96px;
         }
@@ -38,9 +34,9 @@
 <body>
 <div class="container">
     <div class="content">
-        <div class="title">Login</div>
+        <div class="title">LOGIN</div>
 
-        <form method="post" action="{{ route('auth.postLogin')}}">
+        <form method="post" action="{{ route('auth.postLogin') }}">
             {!! csrf_field() !!}
             <div class="form-group">
                 <label for="email">Email address:</label>
@@ -51,15 +47,14 @@
                 <input type="password" class="form-control" id="email" name="password">
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="remember"> Remember me</label>
+                <label><input name="remember" type="checkbox"> Remember me</label>
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button id="login" type="submit" class="btn btn-default">Login</button>
             <button type="reset" class="btn btn-default">Reset</button>
         </form>
 
         No ets usuari encara?
-        <a id="register" href={{route("auth.register")}}>Registra't</a>
-
+        <a id="register" href="{{ route('register.register') }}">Registra't</a>
     </div>
 </div>
 </body>

@@ -43,6 +43,6 @@ Route::get('/flushSession',['as' => "session.flush", function() {
     Session::flush();
 }]);
 
-Route::get('/register', [ 'as' => 'auth.register', 'uses' => 'RegisterController@getRegister' ]);
+Route::get('/register', [ 'as' => 'register.register', 'uses' => 'RegisterController@getRegister' ]);
 
-Route::get('/register',['as' => "auth.postRegister", 'uses' => 'RegisterController@postRegister']);
+Route::get('/register', ['as' => "register.postRegister", 'uses' => 'RegisterController@postRegister']);
