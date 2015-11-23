@@ -46,3 +46,6 @@ Route::get('/flushSession',['as' => "session.flush", function() {
 Route::get('/register', [ 'as' => 'register.register', 'uses' => 'RegisterController@getRegister' ]);
 
 Route::post('/register', [ 'as' => "register.postRegister", 'uses' => 'RegisterController@postRegister']);
+
+Route::get('/checkEmailExist', [ 'as' => "checkEmailExists", 'uses' => 'ApiController@getCheckEmailExist']);
+
