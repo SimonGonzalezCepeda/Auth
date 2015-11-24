@@ -23,7 +23,10 @@ class ApiController extends Controller
 
     private function checkEmail($email)
     {
-        //TODO
-        return "true";
+        $user = User::where('email',$email)->first();
+        if ($user == null){
+            return true;
+        }
+        return false;
     }
 }

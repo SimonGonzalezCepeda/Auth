@@ -19554,6 +19554,20 @@ new Vue({
             console.debug(email);
             var url = this.url + '?email=' + email;
             console.debug(url);
+
+            $.ajax(url).done(function (data) {
+                if (data == "true") {
+                    //TODO email està lliure DO NOTHING!
+                } else {
+                        alert('email ocupat!');
+                    }
+            }).fail(function (data) {
+                //error
+                alert("Ha petat!");
+            }).always(function (data) {
+                //always
+                console.debug('Xivato!');
+            });
         }
     }
 });
