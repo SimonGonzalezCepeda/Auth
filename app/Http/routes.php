@@ -23,6 +23,7 @@ Route::get('/login', [ 'as' => 'auth.login', 'uses' => 'LoginController@getLogin
 
 Route::post('/postlogin', [ 'as' => 'auth.postLogin', 'uses' => 'LoginController@postLogin' ]);
 
+
 Route::group(['middleware' => 'auth' ], function() {
     Route::get('/resource', ['as' => 'resource', function () {
         return view('resource');
