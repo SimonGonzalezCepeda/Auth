@@ -23,21 +23,16 @@ Route::get('/login', [ 'as' => 'auth.login', 'uses' => 'LoginController@getLogin
 
 Route::post('/postlogin', [ 'as' => 'auth.postLogin', 'uses' => 'LoginController@postLogin' ]);
 
-Route::get('/resource', function () {
-    $authenticated = false;
-    if (Session::has('authenticated')){
-       if (Session::get('authenticated') == true) {
-           $authenticated = true;
-       }
-    }
-
-
-    if ($authenticated){
+Route::group(['middleware' => 'auth' ], function() {
+    Route::get('/resource', ['as' => 'resource', function () {
         return view('resource');
-    }else {
-        return redirect() -> route('auth.login');
-    }
+    }]);
+    Route::get('/phpinfo', function(){
+        return phpinfo();
+    });
 });
+
+
 
 Route::get('/flushSession',['as' => "session.flush", function() {
     Session::flush();
